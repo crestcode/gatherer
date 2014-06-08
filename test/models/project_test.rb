@@ -6,4 +6,11 @@ class ProjectTest < ActiveSupport::TestCase
     project = Project.new
     assert(project.done?)
   end
+
+  test 'a project with an incomplete task is not done' do
+    project = Project.new
+    task = Task.new
+    project.tasks << task
+    refute(project.done?)
+  end
 end
