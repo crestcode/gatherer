@@ -13,4 +13,13 @@ class ProjectTest < ActiveSupport::TestCase
     project.tasks << task
     refute(project.done?)
   end
+
+  test 'a project is only done if all its tasks are done' do
+    project = Project.new
+    task = Task.new
+    project.tasks << task
+    refute(project.done?)
+    task.complete!
+    assert(project.done?)
+  end
 end
