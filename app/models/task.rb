@@ -1,7 +1,8 @@
 class Task
 
-  def initialize
-    @complete = false
+  def initialize(options = {})
+    @complete = options[:completed]
+    @size = options[:size]
   end
 
   def complete!
@@ -10,5 +11,9 @@ class Task
 
   def complete?
     @complete
+  end
+
+  def size
+    @size
   end
 end
