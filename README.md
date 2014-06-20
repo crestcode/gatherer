@@ -1,0 +1,1 @@
+Working through the code (and errata) of Rails 4 Test Prescriptions (Beta).
