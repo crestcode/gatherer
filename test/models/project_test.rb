@@ -22,4 +22,12 @@ class ProjectTest < ActiveSupport::TestCase
     task.complete!
     assert(project.done?)
   end
+
+  test 'a project with no completed tasks projects correctly' do
+    project = Project.new
+    assert_equal(0, project.completed_velocity)
+    assert_equal(0, project.current_rate)
+    assert(project.projected_days_remaining.nan?)
+    refute(project.on_schedule?)
+  end
 end
