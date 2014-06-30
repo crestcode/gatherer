@@ -7,7 +7,9 @@ class AddProjectTest < Capybara::Rails::TestCase
     fill_in 'Tasks', with: 'Task 1:3\nTask 2:5'
     click_on 'Create Project'
     visit projects_path
-    assert_content 'Project Runway'
+    @project = Project.find_by_name('Project Runway')
+    assert_selector("#project_#{@project.id} .name", text: 'Project Runway')
+    assert_selector("#project_#{@project.id} .total-size", text: '8')
     assert_content '8'
   end
 end
